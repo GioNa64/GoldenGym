@@ -2,6 +2,7 @@
 
 CREATE DATABASE GoldenGym;
 GO
+
 USE GoldenGym;
 GO
 
