@@ -1,5 +1,7 @@
 package goldengym.entidadesdenegocio;
 
+import java.util.ArrayList;
+
 public class TipoMembresia {
     private int id;
     private String nombre;
@@ -7,6 +9,7 @@ public class TipoMembresia {
     private double Precio;
     private int duracion;
     private byte estatus;
+    private ArrayList<Menbresia> menbresia;
 
     public TipoMembresia() {
     }
