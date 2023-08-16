@@ -13,12 +13,13 @@ public class Cliente {
     private String telefono;
     private int edad;
     private LocalDate fechaRegistro;
+    private int top_aux;
     private byte estatus;
 
     public Cliente() {
     }
 
-    public Cliente(int id, int idGenero, String nombre, String apellido, String codigo, String email, String telefono, int edad, LocalDate fechaRegistro, byte estatus) {
+    public Cliente(int id, int idGenero, String nombre, String apellido, String codigo, String email, String telefono, int edad, LocalDate fechaRegistro, int top_aux, byte estatus) {
         this.id = id;
         this.idGenero = idGenero;
         this.nombre = nombre;
@@ -28,6 +29,7 @@ public class Cliente {
         this.telefono = telefono;
         this.edad = edad;
         this.fechaRegistro = fechaRegistro;
+        this.top_aux = top_aux;
         this.estatus = estatus;
     }
 
@@ -103,6 +105,14 @@ public class Cliente {
         this.fechaRegistro = fechaRegistro;
     }
 
+    public int getTop_aux() {
+        return top_aux;
+    }
+
+    public void setTop_aux(int top_aux) {
+        this.top_aux = top_aux;
+    }
+
     public byte getEstatus() {
         return estatus;
     }
@@ -110,6 +120,6 @@ public class Cliente {
     public void setEstatus(byte estatus) {
         this.estatus = estatus;
     }
-    
+
     
 }

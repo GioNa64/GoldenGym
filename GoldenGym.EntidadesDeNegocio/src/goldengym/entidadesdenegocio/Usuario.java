@@ -17,6 +17,7 @@ public class Usuario {
     private String confirmPassword_aux;
     private Rol rol;
     private Genero genero;
+    
 
     public Usuario() {
     }
@@ -140,6 +141,10 @@ public class Usuario {
     public void setGenero(Genero genero) {
         this.genero = genero;
     }
-    
-    
+
+    public static class EstatusUsuario {
+
+        public static final byte ACTIVO = 1;
+        private static final byte INACTIVO = 2;
+    }   
 }
