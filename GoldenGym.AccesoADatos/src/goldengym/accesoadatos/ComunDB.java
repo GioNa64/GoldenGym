@@ -55,16 +55,16 @@ public class ComunDB {
     }
 
     /* La clase UtilQuery la utilizaremos para concantenar mejor los filtros de la consultas SELECT a la base de datos  */
-    class UtilQuery {
+    class utilQuery {
 
         private String SQL; 
         private PreparedStatement statement; 
         private int numWhere; 
 
-        public UtilQuery() { 
+        public utilQuery() { 
         }
 
-        public UtilQuery(String SQL, PreparedStatement statement, int numWhere) { 
+        public utilQuery(String SQL, PreparedStatement statement, int numWhere) { 
             this.SQL = SQL;
             this.statement = statement;
             this.numWhere = numWhere;
@@ -94,7 +94,7 @@ public class ComunDB {
             this.numWhere = numWhere;
         }
         
-        public void AgregarWhereAnd(String pSql) {
+        public void AgregarNumWhere(String pSql) {
             if (this.SQL != null) {
                 if (this.numWhere == 0) {                     
                     this.SQL += " WHERE ";
