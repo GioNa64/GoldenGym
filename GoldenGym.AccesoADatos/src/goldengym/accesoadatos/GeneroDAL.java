@@ -19,21 +19,21 @@ public class GeneroDAL {
         return sql;
     }
     
-    private static String agregarOrderBy(Rol pRol) {
+    private static String agregarOrderBy(Genero pGenero) {
         String sql = " ORDER BY r.Id DESC";
-        if (pRol.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.MYSQL) {
-            sql += " LIMIT " + pRol.getTop_aux() + " ";
+        if (pGenero.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.MYSQL) {
+            sql += " LIMIT " + pGenero.getTop_aux() + " ";
         }
         return sql;
     }
     
-    public static int crear(Rol pRol) throws Exception {
+    public static int crear(Genero pGenero) throws Exception {
         int result;
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) { 
             sql = "INSERT INTO Rol(Nombre) VALUES(?)";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
-                ps.setString(1, pRol.getNombre());
+                ps.setString(1, pGenero.getNombre());
                 result = ps.executeUpdate();
                 ps.close();
             } catch (SQLException ex) {
@@ -46,14 +46,14 @@ public class GeneroDAL {
         return result;
     }
     
-    public static int modificar(Rol pRol) throws Exception {
+    public static int modificar(Genero pGenero) throws Exception {
         int result;
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) {
             sql = "UPDATE Rol SET Nombre=? WHERE Id=?";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
-                ps.setString(1, pRol.getNombre());
-                ps.setInt(2, pRol.getId());
+                ps.setString(1, pGenero.getNombre());
+                ps.setInt(2, pGenero.getId());
                 result = ps.executeUpdate();
                 ps.close();
             } catch (SQLException ex) {
@@ -66,13 +66,13 @@ public class GeneroDAL {
         return result;
     }
     
-    public static int eliminar(Rol pRol) throws Exception {
+    public static int eliminar(Genero pGenero) throws Exception {
         int result;
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) {
             sql = "DELETE FROM Rol WHERE Id=?";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
-                ps.setInt(1, pRol.getId());
+                ps.setInt(1, pGenero.getId());
                 result = ps.executeUpdate();
                 ps.close();
             } catch (SQLException ex) {
@@ -85,20 +85,20 @@ public class GeneroDAL {
         return result;
     } 
     
-    static int asignarDatosResultSet(Rol pRol, ResultSet pResultSet, int pIndex) throws Exception {
+    static int asignarDatosResultSet(Genero pGenero, ResultSet pResultSet, int pIndex) throws Exception {
         pIndex++;
-        pRol.setId(pResultSet.getInt(pIndex));
+        pGenero.setId(pResultSet.getInt(pIndex));
         pIndex++;
-        pRol.setNombre(pResultSet.getString(pIndex));
+        pGenero.setNombre(pResultSet.getString(pIndex));
         return pIndex;
     }
     
-    private static void obtenerDatos(PreparedStatement pPS, ArrayList<Rol> pRoles) throws Exception {
+    private static void obtenerDatos(PreparedStatement pPS, ArrayList<Genero> pGeneros) throws Exception {
         try (ResultSet resultSet = ComunDB.obtenerResultSet(pPS);) {
             while (resultSet.next()) {
-                Rol rol = new Rol(); 
-                asignarDatosResultSet(rol, resultSet, 0);
-                pRoles.add(rol);
+                Genero genero = new Genero(); 
+                asignarDatosResultSet(genero, resultSet, 0);
+                pGeneros.add(genero);
             }
             resultSet.close();
         } catch (SQLException ex) {
@@ -106,15 +106,15 @@ public class GeneroDAL {
         }
     }
     
-    public static Rol obtenerPorId(Rol pRol) throws Exception {
-        Rol rol = new Rol();
-        ArrayList<Rol> roles = new ArrayList();
+    public static Genero obtenerPorId(Genero pGenero) throws Exception {
+        Genero genero = new Genero();
+        ArrayList<Genero> generos = new ArrayList();
         try (Connection conn = ComunDB.obtenerConexion();) { 
-            String sql = obtenerSelect(pRol);
+            String sql = obtenerSelect(pGenero);
             sql += " WHERE r.Id=?";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
-                ps.setInt(1, pRol.getId());
-                obtenerDatos(ps, roles);
+                ps.setInt(1, pGenero.getId());
+                obtenerDatos(ps, generos);
                 ps.close();
             } catch (SQLException ex) {
                 throw ex;
@@ -125,20 +125,20 @@ public class GeneroDAL {
             throw ex;
         }
         
-        if (roles.size() > 0) {
-            rol = roles.get(0);
+        if (generos.size() > 0) {
+            genero = generos.get(0);
         }
         
-        return rol;
+        return genero;
     }
     
-    public static ArrayList<Rol> obtenerTodos() throws Exception {
-        ArrayList<Rol> roles = new ArrayList<>();
+    public static ArrayList<Genero> obtenerTodos() throws Exception {
+        ArrayList<Genero> generos = new ArrayList<>();
         try (Connection conn = ComunDB.obtenerConexion();) {
-            String sql = obtenerSelect(new Rol());
-            sql += agregarOrderBy(new Rol());
+            String sql = obtenerSelect(new Genero());
+            sql += agregarOrderBy(new Genero());
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
-                obtenerDatos(ps, roles);
+                obtenerDatos(ps, generos);
                 ps.close();
             } catch (SQLException ex) {
                 throw ex;
@@ -149,41 +149,41 @@ public class GeneroDAL {
             throw ex;
         }
         
-        return roles;
+        return generos;
     }
     
-    static void querySelect(Rol pRol, ComunDB.utilQuery pUtilQuery) throws SQLException {
+    static void querySelect(Genero pGenero, ComunDB.utilQuery pUtilQuery) throws SQLException {
         PreparedStatement statement = pUtilQuery.getStatement();
-        if (pRol.getId() > 0) {
+        if (pGenero.getId() > 0) {
             pUtilQuery.AgregarNumWhere(" r.Id=? ");
             if (statement != null) { 
-                statement.setInt(pUtilQuery.getNumWhere(), pRol.getId()); 
+                statement.setInt(pUtilQuery.getNumWhere(), pGenero.getId()); 
             }
         }
 
-        if (pRol.getNombre() != null && pRol.getNombre().trim().isEmpty() == false) {
+        if (pGenero.getNombre() != null && pGenero.getNombre().trim().isEmpty() == false) {
             pUtilQuery.AgregarNumWhere(" r.Nombre LIKE ? "); 
             if (statement != null) {
-                statement.setString(pUtilQuery.getNumWhere(), "%" + pRol.getNombre() + "%"); 
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pGenero.getNombre() + "%"); 
             }
         }
     }
     
-    public static ArrayList<Rol> buscar(Rol pRol) throws Exception {
-        ArrayList<Rol> roles = new ArrayList();
+    public static ArrayList<Genero> buscar(Genero pGenero) throws Exception {
+        ArrayList<Genero> generos = new ArrayList();
         try (Connection conn = ComunDB.obtenerConexion();) {
-            String sql = obtenerSelect(pRol);
+            String sql = obtenerSelect(pGenero);
             ComunDB comundb = new ComunDB();
             ComunDB.utilQuery utilQuery = comundb.new utilQuery(sql, null, 0); 
-            querySelect(pRol, utilQuery);
+            querySelect(pGenero, utilQuery);
             sql = utilQuery.getSQL(); 
-            sql += agregarOrderBy(pRol);
+            sql += agregarOrderBy(pGenero);
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 utilQuery.setStatement(ps);
                 utilQuery.setSQL(null);
                 utilQuery.setNumWhere(0); 
-                querySelect(pRol, utilQuery);
-                obtenerDatos(ps, roles);
+                querySelect(pGenero, utilQuery);
+                obtenerDatos(ps, generos);
                 ps.close();
             } catch (SQLException ex) {
                 throw ex;
@@ -193,6 +193,6 @@ public class GeneroDAL {
         catch (SQLException ex) {
             throw ex;
         }
-        return roles;
+        return generos;
     }
 }
