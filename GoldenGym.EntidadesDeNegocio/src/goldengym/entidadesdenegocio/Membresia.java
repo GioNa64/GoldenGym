@@ -1,9 +1,8 @@
-
 package goldengym.entidadesdenegocio;
 
 import java.time.LocalDate;
 
-public class Menbresia {
+public class Membresia {
     private int id;
     private int idCliente;
     private int idTipoMembresia;
@@ -12,11 +11,12 @@ public class Menbresia {
     private byte estatus;
     private Cliente cliente;
     private TipoMembresia tipomembresia;
+    private int top_aux;
 
-    public Menbresia() {
+    public Membresia() {
     }
 
-    public Menbresia(int id, int idCliente, int idTipoMembresia, LocalDate fechaRegistro, LocalDate fechaVencimiento, byte estatus, Cliente cliente, TipoMembresia tipomembresia) {
+    public Membresia(int id, int idCliente, int idTipoMembresia, LocalDate fechaRegistro, LocalDate fechaVencimiento, byte estatus, Cliente cliente, TipoMembresia tipomembresia, int top_aux) {
         this.id = id;
         this.idCliente = idCliente;
         this.idTipoMembresia = idTipoMembresia;
@@ -25,6 +25,7 @@ public class Menbresia {
         this.estatus = estatus;
         this.cliente = cliente;
         this.tipomembresia = tipomembresia;
+        this.top_aux = top_aux;
     }
 
     public int getId() {
@@ -90,6 +91,16 @@ public class Menbresia {
     public void setTipomembresia(TipoMembresia tipomembresia) {
         this.tipomembresia = tipomembresia;
     }
+
+    public int getTop_aux() {
+        return top_aux;
+    }
+
+    public void setTop_aux(int top_aux) {
+        this.top_aux = top_aux;
+    }
+
+    
     
     
     
