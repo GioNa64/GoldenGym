@@ -31,7 +31,7 @@ public class GeneroDAL {
         int result;
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) { 
-            sql = "INSERT INTO Rol(Nombre) VALUES(?)";
+            sql = "INSERT INTO Genero(Nombre) VALUES(?)";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 ps.setString(1, pGenero.getNombre());
                 result = ps.executeUpdate();
@@ -50,7 +50,7 @@ public class GeneroDAL {
         int result;
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) {
-            sql = "UPDATE Rol SET Nombre=? WHERE Id=?";
+            sql = "UPDATE Genero SET Nombre=? WHERE Id=?";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 ps.setString(1, pGenero.getNombre());
                 ps.setInt(2, pGenero.getId());
@@ -70,7 +70,7 @@ public class GeneroDAL {
         int result;
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) {
-            sql = "DELETE FROM Rol WHERE Id=?";
+            sql = "DELETE FROM Genero WHERE Id=?";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 ps.setInt(1, pGenero.getId());
                 result = ps.executeUpdate();
