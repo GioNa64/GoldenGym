@@ -138,6 +138,28 @@ public class ClienteDAL {
         }
     }
      
+     private static void obtenerDatosIncluirGenero(PreparedStatement pPS, ArrayList<Cliente> pCliente) throws Exception {
+        try (ResultSet resultSet = ComunDB.obtenerResultSet(pPS);) {
+            HashMap<Integer, Genero> generoMap = new HashMap(); 
+            while (resultSet.next()) {
+                Cliente cliente = new Cliente();
+                int index = asignarDatosResultSet(cliente, resultSet, 0);
+                if (generoMap.containsKey(cliente.getIdGenero()) == false) {
+                    Genero genero = new Genero();
+                    GeneroDAL.asignarDatosResultSet(genero, resultSet, index);
+                    generoMap.put(genero.getId(), genero); 
+                    cliente.setGenero(genero); 
+                } else {
+                    cliente.setGenero(generoMap.get(cliente.getIdGenero())); 
+                }
+                pCliente.add(cliente); 
+            }
+            resultSet.close();
+        } catch (SQLException ex) {
+            throw ex; 
+        }
+    }
+     
      public static Cliente obtenerPorId(Cliente pCliente) throws Exception {
         Cliente cliente = new Cliente();
         ArrayList<Cliente> clientes = new ArrayList();
@@ -272,6 +294,40 @@ public class ClienteDAL {
             conn.close();
         }
         catch (SQLException ex) {
+            throw ex;
+        }
+        return clientes;
+    }
+     
+    public static ArrayList<Cliente> buscarIncluirGenero(Cliente pCliente) throws Exception {
+        ArrayList<Cliente> clientes = new ArrayList();
+        try (Connection conn = ComunDB.obtenerConexion();) {
+            String sql = "SELECT ";
+            if (pCliente.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.SQLSERVER) {
+                sql += "TOP " + pCliente.getTop_aux() + " "; 
+            }
+            sql += obtenerCampos();
+            sql += ",";
+            sql += GeneroDAL.obtenerCampos();
+            sql += " FROM Cliente c";
+            sql += " JOIN Genero g on (c.IdGenero=g.Id)";
+            ComunDB comundb = new ComunDB();
+            ComunDB.utilQuery utilQuery = comundb.new utilQuery(sql, null, 0);
+            querySelect(pCliente, utilQuery);
+            sql = utilQuery.getSQL();
+            sql += agregarOrderBy(pCliente);
+            try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
+                utilQuery.setStatement(ps);
+                utilQuery.setSQL(null);
+                utilQuery.setNumWhere(0);
+                querySelect(pCliente, utilQuery);
+                obtenerDatosIncluirGenero(ps, clientes);
+                ps.close();
+            } catch (SQLException ex) {
+                throw ex;
+            }
+            conn.close();
+        } catch (SQLException ex) {
             throw ex;
         }
         return clientes;

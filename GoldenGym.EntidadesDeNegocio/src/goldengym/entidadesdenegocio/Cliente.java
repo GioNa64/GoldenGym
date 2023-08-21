@@ -15,11 +15,12 @@ public class Cliente {
     private LocalDate fechaRegistro;
     private int top_aux;
     private byte estatus;
+    private Genero genero;
 
     public Cliente() {
     }
 
-    public Cliente(int id, int idGenero, String nombre, String apellido, String codigo, String email, String telefono, int edad, LocalDate fechaRegistro, int top_aux, byte estatus) {
+    public Cliente(int id, int idGenero, String nombre, String apellido, String codigo, String email, String telefono, int edad, LocalDate fechaRegistro, int top_aux, byte estatus, Genero genero) {
         this.id = id;
         this.idGenero = idGenero;
         this.nombre = nombre;
@@ -31,6 +32,7 @@ public class Cliente {
         this.fechaRegistro = fechaRegistro;
         this.top_aux = top_aux;
         this.estatus = estatus;
+        this.genero = genero;
     }
 
     public int getId() {
@@ -119,6 +121,14 @@ public class Cliente {
 
     public void setEstatus(byte estatus) {
         this.estatus = estatus;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
     }
 
     
