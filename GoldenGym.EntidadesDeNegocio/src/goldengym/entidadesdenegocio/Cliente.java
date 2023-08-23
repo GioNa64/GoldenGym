@@ -2,6 +2,7 @@
 package goldengym.entidadesdenegocio;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Cliente {
     private int id;
@@ -16,11 +17,12 @@ public class Cliente {
     private int top_aux;
     private byte estatus;
     private Genero genero;
+    private ArrayList<Membresia> membresia;
 
     public Cliente() {
     }
 
-    public Cliente(int id, int idGenero, String nombre, String apellido, String codigo, String email, String telefono, int edad, LocalDate fechaRegistro, int top_aux, byte estatus, Genero genero) {
+    public Cliente(int id, int idGenero, String nombre, String apellido, String codigo, String email, String telefono, int edad, LocalDate fechaRegistro, int top_aux, byte estatus, Genero genero, ArrayList<Membresia> membresia) {
         this.id = id;
         this.idGenero = idGenero;
         this.nombre = nombre;
@@ -33,6 +35,7 @@ public class Cliente {
         this.top_aux = top_aux;
         this.estatus = estatus;
         this.genero = genero;
+        this.membresia = membresia;
     }
 
     public int getId() {
@@ -131,5 +134,12 @@ public class Cliente {
         this.genero = genero;
     }
 
-    
+    public ArrayList<Membresia> getMembresia() {
+        return membresia;
+    }
+
+    public void setMembresia(ArrayList<Membresia> membresia) {
+        this.membresia = membresia;
+    }
+
 }

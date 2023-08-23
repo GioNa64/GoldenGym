@@ -10,12 +10,12 @@ public class TipoMembresia {
     private int duracion;
     private byte estatus;
     private int top_aux;
-    private ArrayList<Membresia> membresia;
+    private ArrayList<Membresia> membresias;
 
     public TipoMembresia() {
     }
 
-    public TipoMembresia(int id, String nombre, String descripcion, double Precio, int duracion, byte estatus, int top_aux, ArrayList<Membresia> membresia) {
+    public TipoMembresia(int id, String nombre, String descripcion, double Precio, int duracion, byte estatus, int top_aux, ArrayList<Membresia> membresias) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -23,7 +23,7 @@ public class TipoMembresia {
         this.duracion = duracion;
         this.estatus = estatus;
         this.top_aux = top_aux;
-        this.membresia = membresia;
+        this.membresias = membresias;
     }
 
     public int getId() {
@@ -82,15 +82,14 @@ public class TipoMembresia {
         this.top_aux = top_aux;
     }
 
-    public ArrayList<Membresia> getMembresia() {
-        return membresia;
+    public ArrayList<Membresia> getMembresias() {
+        return membresias;
     }
 
-    public void setMembresia(ArrayList<Membresia> membresia) {
-        this.membresia = membresia;
+    public void setMembresias(ArrayList<Membresia> membresias) {
+        this.membresias = membresias;
     }
 
-    
-    
+   
     
 }
