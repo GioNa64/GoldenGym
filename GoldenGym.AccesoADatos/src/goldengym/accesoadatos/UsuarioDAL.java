@@ -191,9 +191,11 @@ public class UsuarioDAL {
         }
     }
     
-     private static void obtenerDatosIncluirRol(PreparedStatement pPS, ArrayList<Usuario> pUsuarios) throws Exception {
+    private static void obtenerDatosIncluirRelaciones(PreparedStatement pPS, ArrayList<Usuario> pUsuario) throws Exception {
         try (ResultSet resultSet = ComunDB.obtenerResultSet(pPS);) {
             HashMap<Integer, Rol> rolMap = new HashMap(); 
+            HashMap<Integer, Genero> generoMap = new HashMap();
+            
             while (resultSet.next()) {
                 Usuario usuario = new Usuario();
                 int index = asignarDatosResultSet(usuario, resultSet, 0);
@@ -205,13 +207,24 @@ public class UsuarioDAL {
                 } else {
                     usuario.setRol(rolMap.get(usuario.getIdRol())); 
                 }
-                pUsuarios.add(usuario); 
+                
+                if (generoMap.containsKey(usuario.getIdGenero()) == false) {
+                    Genero genero = new Genero();
+                    GeneroDAL.asignarDatosResultSet(genero, resultSet, index+3);
+                    generoMap.put(genero.getId(), genero); 
+                    usuario.setGenero(genero); 
+                } else {
+                    usuario.setGenero(generoMap.get(usuario.getIdGenero())); 
+                }
+                
+                pUsuario.add(usuario); 
             }
             resultSet.close();
         } catch (SQLException ex) {
             throw ex; 
         }
     }
+    
      
       public static Usuario obtenerPorId(Usuario pUsuario) throws Exception {
         Usuario usuario = new Usuario();
@@ -394,7 +407,7 @@ public class UsuarioDAL {
         return result;
     }
       
-      public static ArrayList<Usuario> buscarIncluirRol(Usuario pUsuario) throws Exception {
+        public static ArrayList<Usuario> buscarIncluirRelaciones(Usuario pUsuario) throws Exception {
         ArrayList<Usuario> usuarios = new ArrayList();
         try (Connection conn = ComunDB.obtenerConexion();) {
             String sql = "SELECT ";
@@ -402,10 +415,14 @@ public class UsuarioDAL {
                 sql += "TOP " + pUsuario.getTop_aux() + " "; 
             }
             sql += obtenerCampos();
-            sql += ",";
-            sql += RolDAL.obtenerCampos();
-            sql += " FROM Usuario u";
-            sql += " JOIN Rol r on (u.IdRol=r.Id)";
+            sql += ", ";
+            sql += ClienteDAL.obtenerCampos();
+            sql += ", ";
+            sql += TipoMembresiaDAL.obtenerCampos();
+            sql += ", ";
+            sql += " FROM Membresia x";
+            sql += " INNER JOIN Roles m on (x.IdRol = c.Id)";
+            sql += " INNER JOIN Generos p on (x.IdGenero = t.Id)";
             ComunDB comundb = new ComunDB();
             ComunDB.utilQuery utilQuery = comundb.new utilQuery(sql, null, 0);
             querySelect(pUsuario, utilQuery);
@@ -416,7 +433,7 @@ public class UsuarioDAL {
                 utilQuery.setSQL(null);
                 utilQuery.setNumWhere(0);
                 querySelect(pUsuario, utilQuery);
-                obtenerDatosIncluirRol(ps, usuarios);
+                obtenerDatosIncluirRelaciones(ps, usuarios);
                 ps.close();
             } catch (SQLException ex) {
                 throw ex;
@@ -427,6 +444,6 @@ public class UsuarioDAL {
         }
         return usuarios;
     }
-}
+} 
 
 

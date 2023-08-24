@@ -1,5 +1,6 @@
 package goldengym.appweb.controllers;
 
+import goldengym.accesoadatos.GeneroDAL;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import goldengym.accesoadatos.RolDAL;
 import goldengym.accesoadatos.UsuarioDAL;
 import goldengym.appweb.utils.*;
+import goldengym.entidadesdenegocio.Genero;
 import goldengym.entidadesdenegocio.Rol;
 import goldengym.entidadesdenegocio.Usuario;
 
@@ -49,7 +51,7 @@ public class UsuarioServlet extends HttpServlet {
         try {
             Usuario usuario = new Usuario();
             usuario.setTop_aux(10);
-            ArrayList<Usuario> usuarios = UsuarioDAL.buscarIncluirRol(usuario);
+            ArrayList<Usuario> usuarios = UsuarioDAL.buscarIncluirRelaciones(usuario);
             request.setAttribute("usuarios", usuarios);
             request.setAttribute("top_aux", usuario.getTop_aux());
             request.getRequestDispatcher("Views/Usuario/index.jsp").forward(request, response);
@@ -61,7 +63,7 @@ public class UsuarioServlet extends HttpServlet {
     private void doPostRequestIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Usuario usuario = obtenerUsuario(request);
-            ArrayList<Usuario> usuarios = UsuarioDAL.buscarIncluirRol(usuario);
+            ArrayList<Usuario> usuarios = UsuarioDAL.buscarIncluirRelaciones(usuario);
             request.setAttribute("usuarios", usuarios);
             request.setAttribute("top_aux", usuario.getTop_aux());
             request.getRequestDispatcher("Views/Usuario/index.jsp").forward(request, response);
@@ -97,7 +99,10 @@ public class UsuarioServlet extends HttpServlet {
             if (usuario_result.getId() > 0) {
                 Rol rol = new Rol();
                 rol.setId(usuario_result.getIdRol());
+                Genero genero = new Genero();
+                genero.setId(usuario_result.getIdGenero());
                 usuario_result.setRol(RolDAL.obtenerPorId(rol));
+                usuario_result.setGenero(GeneroDAL.obtenerPorId(genero));
                 request.setAttribute("usuario", usuario_result);
             } else {
                 Utilidad.enviarError("El Id:" + usuario_result.getId() + " no existe en la tabla de Usuario", request, response);
