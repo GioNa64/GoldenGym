@@ -11,10 +11,10 @@ public class ComunDB {
     
     static int TIPODB = TipoDB.SQLSERVER;
     
-    static String connectionUrlSqlServer = "jdbc:sqlserver://localhost;"
+    static String connectionUrlSqlServer = "jdbc:sqlserver://GoldenGym.mssql.somee.com;"
             + "database=GoldenGym;"
-            + "user=JavaUser;"
-            + "password=#Modulo16;"
+            + "user=GoldenGym;"
+            + "password=GoldenGym2023;"
             + "loginTimeout=30;encrypt=false;trustServerCertificate=false";
     
     public static Connection obtenerConexion() throws SQLException {
