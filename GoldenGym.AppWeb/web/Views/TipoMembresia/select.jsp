@@ -1,17 +1,15 @@
-<%-- 
-    Document   : select
-    Created on : 18 ago 2023, 18:52:26
-    Author     : MINEDUCYT
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+<%@page import="goldengym.entidadesdenegocio.TipoMembresia"%>
+<%@page import="goldengym.accesoadatos.TipoMembresiaDAL"%>
+<%@page import="java.util.ArrayList"%>
+
+<% ArrayList<TipoMembresia> tiposMembresias = TipoMembresiaDAL.obtenerTodos();
+    int id = Integer.parseInt(request.getParameter("id"));
+%>
+<select id="slTipoMembresia" name="idTipoMembresia">
+    <option <%=(id == 0) ? "selected" : ""%>  value="0">SELECCIONAR</option>
+    <% for (TipoMembresia tipoMembresia : tiposMembresias) {%>
+        <option <%=(id == tipoMembresia.getId()) ? "selected" : "" %>  value="<%=tipoMembresia.getId()%>"><%= tipoMembresia.getNombre()%></option>
+    <%}%>
+</select>
+<label for="idTipoMembresia">TipoMembresia</label>
