@@ -10,6 +10,7 @@
             <% if (SessionUser.isAuth(request)) {  %>
             <li><a href="Home">Inicio</a></li>
             <li><a href="Membresia">Membresias</a></li>
+            <li><a href="Genero">Géneros</a></li>
             <li><a href="Cliente">Clientes</a></li>
             <li><a href="Usuario">Usuarios</a></li>
             <li><a href="Rol">Roles</a></li
@@ -26,6 +27,7 @@
      <% if (SessionUser.isAuth(request)) {  %>
             <li><a href="Home">Inicio</a></li>
             <li><a href="Membresia">Membresias</a></li>
+            <li><a href="Genero">Géneros</a></li>
             <li><a href="Cliente">Clientes</a></li>
             <li><a href="Usuario">Usuarios</a></li>
             <li><a href="Rol">Roles</a></li
