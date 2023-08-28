@@ -15,12 +15,12 @@ public class GeneroDAL {
         if (pGenero.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.SQLSERVER) {            
             sql += "TOP " + pGenero.getTop_aux() + " ";
         }
-        sql += (obtenerCampos() + " FROM Genero r");
+        sql += (obtenerCampos() + " FROM Genero g");
         return sql;
     }
     
     private static String agregarOrderBy(Genero pGenero) {
-        String sql = " ORDER BY r.Id DESC";
+        String sql = " ORDER BY g.Id DESC";
         if (pGenero.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.MYSQL) {
             sql += " LIMIT " + pGenero.getTop_aux() + " ";
         }
@@ -111,7 +111,7 @@ public class GeneroDAL {
         ArrayList<Genero> generos = new ArrayList();
         try (Connection conn = ComunDB.obtenerConexion();) { 
             String sql = obtenerSelect(pGenero);
-            sql += " WHERE r.Id=?";
+            sql += " WHERE g.Id=?";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 ps.setInt(1, pGenero.getId());
                 obtenerDatos(ps, generos);
@@ -155,14 +155,14 @@ public class GeneroDAL {
     static void querySelect(Genero pGenero, ComunDB.utilQuery pUtilQuery) throws SQLException {
         PreparedStatement statement = pUtilQuery.getStatement();
         if (pGenero.getId() > 0) {
-            pUtilQuery.AgregarNumWhere(" r.Id=? ");
+            pUtilQuery.AgregarNumWhere(" g.Id=? ");
             if (statement != null) { 
                 statement.setInt(pUtilQuery.getNumWhere(), pGenero.getId()); 
             }
         }
 
         if (pGenero.getNombre() != null && pGenero.getNombre().trim().isEmpty() == false) {
-            pUtilQuery.AgregarNumWhere(" r.Nombre LIKE ? "); 
+            pUtilQuery.AgregarNumWhere(" g.Nombre LIKE ? "); 
             if (statement != null) {
                 statement.setString(pUtilQuery.getNumWhere(), "%" + pGenero.getNombre() + "%"); 
             }
