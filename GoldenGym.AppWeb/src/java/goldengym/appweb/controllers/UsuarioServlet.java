@@ -23,7 +23,7 @@ public class UsuarioServlet extends HttpServlet {
         String accion = Utilidad.getParameter(request, "accion", "index");
         Usuario usuario = new Usuario();
         usuario.setIdRol(Integer.parseInt(Utilidad.getParameter(request, "idRol", "0")));
-        usuario.setIdRol(Integer.parseInt(Utilidad.getParameter(request, "idGenero", "0")));
+        usuario.setIdGenero(Integer.parseInt(Utilidad.getParameter(request, "idGenero", "0")));
         usuario.setNombre(Utilidad.getParameter(request, "nombre", ""));
         usuario.setApellido(Utilidad.getParameter(request, "apellido", ""));
         usuario.setLogin(Utilidad.getParameter(request, "login", ""));

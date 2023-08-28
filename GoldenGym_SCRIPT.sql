@@ -3,20 +3,20 @@
 CREATE DATABASE GoldenGym;
 GO
 
-USE GoldenGym;
+USE GoldenGym
 GO
 
-CREATE TABLE Roles(
+CREATE TABLE Rol( 
 Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 Nombre NVARCHAR(80) NOT NULL,
 );
-CREATE TABLE Generos(
+CREATE TABLE Genero(
 Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 Nombre NVARCHAR(40) NOT NULL
 );
 GO
 go
-CREATE TABLE Usurios(
+CREATE TABLE Usuario(
 Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 IdRol INT NOT NULL,
 IdGenero INT NOT NULL,
@@ -26,12 +26,12 @@ Apellido NVARCHAR(50) NOT NULL,
 [Password] NVARCHAR(100) NOT NULL,
 FechaRegistro DATETIME NOT NULL,
 Estatus TINYINT NOT NULL,
-FOREIGN KEY (IdRol) REFERENCES Roles(Id),
-FOREIGN KEY (IdGenero) REFERENCES Generos(Id)
+FOREIGN KEY (IdRol) REFERENCES Rol(Id),
+FOREIGN KEY (IdGenero) REFERENCES Genero(Id)
 );
 go
 
-CREATE TABLE Clientes(
+CREATE TABLE Cliente(
 Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 IdGenero INT NOT NULL,
 Nombre NVARCHAR(50) NOT NULL,
@@ -42,11 +42,11 @@ Telefono NVARCHAR(20) NULL,
 Edad INT NULL,
 FechaRegistro DATETIME NOT NULL,
 Estatus TINYINT NOT NULL,
-FOREIGN KEY(IdGenero) REFERENCES Generos(Id)
+FOREIGN KEY(IdGenero) REFERENCES Genero(Id)
 );
 go
 
-CREATE TABLE TipoMembresias(
+CREATE TABLE TipoMembresia(
 Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 Nombre NVARCHAR (100) NOT NULL,
 Descripcion NVARCHAR(MAX) NOT NULL,
@@ -55,13 +55,19 @@ Duracion INT NOT NULL,
 Estatus TINYINT 
 );
 
-CREATE TABLE Membresias(
+CREATE TABLE Membresia(
 Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 IdCliente INT NOT NULL,
 IdTipoMembresia INT NOT NULL,
 FechaRegistro DATETIME NOT NULL,
 FechaVencimiento DATETIME NOT NULL,
 Estatus TINYINT NOT NULL,
-FOREIGN KEY(IdCliente)REFERENCES Clientes(Id),
-FOREIGN KEY(IdTipoMembresia)REFERENCES TipoMembresias(Id)
+FOREIGN KEY(IdCliente)REFERENCES Cliente(Id),
+FOREIGN KEY(IdTipoMembresia)REFERENCES TipoMembresia(Id)
 );
+
+select * from Usuario;
+
+insert into Genero values('Masculino');
+insert into Rol values ('Administrador');
+insert into Usuario values(1,1,'Juan','Perez','jp111','7bc345c019b57fccfd427acd01879aa3','25/08/2023',1);

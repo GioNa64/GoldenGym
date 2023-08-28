@@ -15,7 +15,7 @@ public class ClienteDAL {
         if (pCliente.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.SQLSERVER) {            
             sql += "TOP " + pCliente.getTop_aux() + " ";
         }
-        sql += (obtenerCampos() + " FROM Contacto c");
+        sql += (obtenerCampos() + " FROM Cliente c");
         return sql;
     }
     

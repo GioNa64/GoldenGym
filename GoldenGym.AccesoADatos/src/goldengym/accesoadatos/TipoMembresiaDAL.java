@@ -14,7 +14,7 @@ public class TipoMembresiaDAL {
         if (pTipoMembresia.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.SQLSERVER) {            
             sql += "TOP " + pTipoMembresia.getTop_aux() + " ";
         }
-        sql += (obtenerCampos() + " FROM Rol r");
+        sql += (obtenerCampos() + " FROM TipoMembresia t");
         return sql;
     }
     

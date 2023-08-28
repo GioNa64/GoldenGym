@@ -25,7 +25,7 @@ public class UsuarioDAL {
     }
     
     static String obtenerCampos() {
-        return "u.Id, u.IdRol, u.IdGenero, u.Nombre, u.Apellido, u.Login, u.FechaRegistro, u.Estatus, ";
+        return "u.Id, u.IdRol, u.IdGenero, u.Nombre, u.Apellido, u.Login, u.FechaRegistro, u.Estatus";
     }
     
     private static String obtenerSelect(Usuario pUsuario) {
