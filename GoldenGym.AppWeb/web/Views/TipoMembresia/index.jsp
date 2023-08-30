@@ -97,13 +97,13 @@
                                     <td><%=TipoMembresia.getEstatus()%></td>
                                     <td>
                                         <div style="display:flex">
-                                             <a href="TipoMembresia?accion=edit&id=<%=TipoMembresia.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
+                                             <a href="TipoMembresia?accion=edit&id=<%=tipomembresia.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
                                             <i class="material-icons">edit</i>
                                         </a>
-                                        <a href="TipoMembresia?accion=details&id=<%=TipoMembresia.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
+                                        <a href="TipoMembresia?accion=details&id=<%=tipomembresia.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
                                             <i class="material-icons">description</i>
                                         </a>
-                                        <a href="TipoMembresia?accion=delete&id=<%=TipoMembresia.getId()%>" title="Eliminar" class="waves-effect waves-light btn red">
+                                        <a href="TipoMembresia?accion=delete&id=<%=tipomembresia.getId()%>" title="Eliminar" class="waves-effect waves-light btn red">
                                             <i class="material-icons">delete</i>
                                         </a>    
                                         </div>                                                                    

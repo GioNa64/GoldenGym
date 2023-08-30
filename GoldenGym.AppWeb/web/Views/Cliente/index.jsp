@@ -2,14 +2,14 @@
 <%@page import="goldengym.entidadesdenegocio.Cliente"%>
 <%@page import="java.util.ArrayList"%>
 
-<% ArrayList<Contacto> contactos = (ArrayList<Contacto>) request.getAttribute("clientes");
+<% ArrayList<Cliente> clientes = (ArrayList<Cliente>) request.getAttribute("clientes");
     int numPage = 1;
     int numReg = 10;
     int countReg = 0;
-    if (contactos == null) {
-        contactos = new ArrayList();
-    } else if (contactos.size() > numReg) {
-        double divNumPage = (double) contactos.size() / (double) numReg;
+    if (clientes == null) {
+        clientes = new ArrayList();
+    } else if (clientes.size() > numReg) {
+        double divNumPage = (double) clientes.size() / (double) numReg;
         numPage = (int) Math.ceil(divNumPage);
     }
     String strTop_aux = request.getParameter("top_aux");

@@ -6,7 +6,7 @@ import goldengym.entidadesdenegocio.*;
 
 public class ClienteDAL {
     static String obtenerCampos() {
-        return "c.Id, c.IdGenero, c.Nombre, c.Apellido, c.Codigo, c.Email, c.Telefono, c.Edad, u.FechaRegistro, c.Estatus";
+        return "c.Id, c.IdGenero, c.Nombre, c.Apellido, c.Codigo, c.Email, c.Telefono, c.Edad, c.FechaRegistro, c.Estatus";
     }
     
     private static String obtenerSelect(Cliente pCliente) {
