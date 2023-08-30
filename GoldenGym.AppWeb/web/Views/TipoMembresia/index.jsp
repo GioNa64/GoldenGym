@@ -2,14 +2,14 @@
 <%@page import="goldengym.entidadesdenegocio.TipoMembresia"%>
 <%@page import="java.util.ArrayList"%>
 
-<% ArrayList<TipoMembresia> tiposMembresias = (ArrayList<TipoMembresia>) request.getAttribute("tipoMembresias");
+<% ArrayList<TipoMembresia> tiposMembresias = (ArrayList<TipoMembresia>) request.getAttribute("tiposMembresias");
     int numPage = 1;
     int numReg = 10;
     int countReg = 0;
-    if (tipoMembresias == null) {
-        tipoMembresias = new ArrayList();
-    } else if (tipoMembresias.size() > numReg) {
-        double divNumPage = (double) tipoMembresias.size() / (double) numReg;
+    if (tiposMembresias == null) {
+        tiposMembresias = new ArrayList();
+    } else if (tiposMembresias.size() > numReg) {
+        double divNumPage = (double) tiposMembresias.size() / (double) numReg;
         numPage = (int) Math.ceil(divNumPage);
     }
     String strTop_aux = request.getParameter("top_aux");
@@ -81,7 +81,7 @@
                                 </tr>
                             </thead>                       
                             <tbody>                           
-                                <% for (TipoMembresia tipoMembresia : tipoMembresias) {
+                                <% for (TipoMembresia tiposMembresia : tiposMembresias) {
                                         int tempNumPage = numPage;
                                         if (numPage > 1) {
                                             countReg++;
@@ -90,17 +90,17 @@
                                         }
                                 %>
                                 <tr data-page="<%= tempNumPage%>">                                    
-                                    <td><%=tipoMembresia.getNombre()%></td>  
-                                    <td><%=tipoMembresia.getDescripcion()%></td>
-                                    <td><%=tipoMembresia.getPrecio()%></td>  
-                                    <td><%=tipoMembresia.getDuracion()%></td>
-                                    <td><%=tipoMembresia.getEstatus()%></td>
+                                    <td><%=TipoMembresia.getNombre()%></td>  
+                                    <td><%=TipoMembresia.getDescripcion()%></td>
+                                    <td><%=TipoMembresia.getPrecio()%></td>  
+                                    <td><%=TipoMembresia.getDuracion()%></td>
+                                    <td><%=TipoMembresia.getEstatus()%></td>
                                     <td>
                                         <div style="display:flex">
-                                             <a href="TipoMembresia?accion=edit&id=<%=tipoMembresia.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
+                                             <a href="TipoMembresia?accion=edit&id=<%=TipoMembresia.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
                                             <i class="material-icons">edit</i>
                                         </a>
-                                        <a href="TipoMembresia?accion=details&id=<%=tipoMembresia.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
+                                        <a href="TipoMembresia?accion=details&id=<%=TipoMembresia.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
                                             <i class="material-icons">description</i>
                                         </a>
                                         <a href="TipoMembresia?accion=delete&id=<%=TipoMembresia.getId()%>" title="Eliminar" class="waves-effect waves-light btn red">
