@@ -28,7 +28,7 @@
     <body>
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
-            <h5>Buscar TipoMembresia</h5>
+            <h5>Buscar Tipo de Membresia</h5>
             <form action="TipoMembresia" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
                 <div class="row">
@@ -81,7 +81,7 @@
                                 </tr>
                             </thead>                       
                             <tbody>                           
-                                <% for (TipoMembresia tiposMembresia : tiposMembresias) {
+                                <% for (TipoMembresia tipoMembresia : tiposMembresias) {
                                         int tempNumPage = numPage;
                                         if (numPage > 1) {
                                             countReg++;
@@ -90,20 +90,20 @@
                                         }
                                 %>
                                 <tr data-page="<%= tempNumPage%>">                                    
-                                    <td><%=TipoMembresia.getNombre()%></td>  
-                                    <td><%=TipoMembresia.getDescripcion()%></td>
-                                    <td><%=TipoMembresia.getPrecio()%></td>  
-                                    <td><%=TipoMembresia.getDuracion()%></td>
-                                    <td><%=TipoMembresia.getEstatus()%></td>
+                                    <td><%=tipoMembresia.getNombre()%></td>  
+                                    <td><%=tipoMembresia.getDescripcion()%></td>
+                                    <td><%=tipoMembresia.getPrecio()%></td>  
+                                    <td><%=tipoMembresia.getDuracion()%></td>
+                                    <td><%=tipoMembresia.getEstatus()%></td>
                                     <td>
                                         <div style="display:flex">
-                                             <a href="TipoMembresia?accion=edit&id=<%=tipomembresia.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
+                                            <a href="TipoMembresia?accion=edit&id=<%=tipoMembresia.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
                                             <i class="material-icons">edit</i>
                                         </a>
-                                        <a href="TipoMembresia?accion=details&id=<%=tipomembresia.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
+                                        <a href="TipoMembresia?accion=details&id=<%=tipoMembresia.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
                                             <i class="material-icons">description</i>
                                         </a>
-                                        <a href="TipoMembresia?accion=delete&id=<%=tipomembresia.getId()%>" title="Eliminar" class="waves-effect waves-light btn red">
+                                        <a href="TipoMembresia?accion=delete&id=<%=tipoMembresia.getId()%>" title="Eliminar" class="waves-effect waves-light btn red">
                                             <i class="material-icons">delete</i>
                                         </a>    
                                         </div>                                                                    

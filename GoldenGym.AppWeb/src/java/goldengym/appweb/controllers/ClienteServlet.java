@@ -44,7 +44,7 @@ public class ClienteServlet extends HttpServlet {
             Cliente cliente = new Cliente();
             cliente.setTop_aux(10);
             ArrayList<Cliente> clientes = ClienteDAL.buscarIncluirGenero(cliente);
-            request.setAttribute("clientes", cliente);
+            request.setAttribute("clientes", clientes);
             request.setAttribute("top_aux", cliente.getTop_aux());
             request.getRequestDispatcher("Views/Cliente/index.jsp").forward(request, response);
         } catch (Exception ex) {

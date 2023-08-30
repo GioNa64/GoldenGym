@@ -28,7 +28,7 @@
     <body>
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
-            <h5>Buscar Contacto</h5>
+            <h5>Buscar Cliente</h5>
             <form action="Cliente" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
                 <div class="row">
