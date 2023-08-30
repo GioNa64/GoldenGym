@@ -32,39 +32,33 @@
             <form action="Cliente" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
                 <div class="row">
-                    <div class="input-field col l6 s12">
-                        <input  id="txtIdGenero" type="text" name="idgenero">
-                        <label for="txtIdGenero">Id Genero</label>
-                    </div>
-                    <div class="input-field col l6 s12">
+                    <div class="input-field col l3 s12">
                         <input  id="txtNombre" type="text" name="nombre">
                         <label for="txtNombre">Nombre</label>
                     </div>
-                    <div class="input-field col l6 s12">
+                    <div class="input-field col l3 s12">
                         <input  id="txtApellido" type="text" name="apellido">
                         <label for="txtApellido">Apellido</label>
                     </div>
-                    <div class="input-field col l6 s12">
+                    <div class="input-field col l3 s12">
                         <input  id="txtCodigo" type="text" name="codigo">
                         <label for="txtCodigo">Codigo</label>
-                    </div>     
-                    <div class="input-field col l6 s12">
+                    </div>
+                    <div class="input-field col l3 s12">
+                        <input  id="txtTelefono" type="text" name="telefono">
+                        <label for="txtTelefono">Telefono</label>
+                    </div> 
+                    <div class="input-field col l3 s12">
                         <input  id="txtEmail" type="text" name="email">
                         <label for="txtEmail">Email</label>
                     </div>  
-                    <div class="input-field col l6 s12">
-                        <input  id="txtTelefono" type="text" name="telefono">
-                        <label for="txtTelefono">Telefono</label>
-                    </div>  
-                    <div class="input-field col l6 s12">
+
+                    <div class="input-field col l3 s12">
                         <input  id="txtEdad" type="text" name="edad">
                         <label for="txtEdad">Edad</label>
                     </div>  
-                    <div class="input-field col l6 s12">
-                        <input  id="txtFechaRegistro" type="text" name="fecharegistro">
-                        <label for="txtFechaRegistro">Fecha Registro</label>
-                    </div>  
-                    <div class="input-field col l6 s12">
+ 
+                    <div class="input-field col l3 s12">
                         <input  id="txtEstatus" type="text" name="estatus">
                         <label for="txtEstatus">Estatus</label>
                     </div>  
