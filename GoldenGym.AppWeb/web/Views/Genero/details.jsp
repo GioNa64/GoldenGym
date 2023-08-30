@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="g.entioldengymdadesdenegocio.Rol"%>
+<%@page import="goldengym.entidadesdenegocio.Genero"%>
 <% Genero genero = (Genero) request.getAttribute("genero");%>
 
 <!DOCTYPE html>
