@@ -2,7 +2,6 @@ package goldengym.accesoadatos;
 
 import java.util.*;
 import java.sql.*;
-import java.time.LocalDate;
 import goldengym.entidadesdenegocio.*;
 
 public class MembresiaDAL {
@@ -236,7 +235,7 @@ public class MembresiaDAL {
         }
 
         if (pMembresia.getFechaVencimiento() != null) {
-                pUtilQuery.AgregarNumWhere(" m.getFechaVencimiento=? ");
+                pUtilQuery.AgregarNumWhere(" m.FechaVencimiento=? ");
             if (statement != null) {
                 statement.setDate(pUtilQuery.getNumWhere(), java.sql.Date.valueOf(pMembresia.getFechaVencimiento()));
             }
@@ -289,10 +288,9 @@ public class MembresiaDAL {
             sql += ClienteDAL.obtenerCampos();
             sql += ", ";
             sql += TipoMembresiaDAL.obtenerCampos();
-            sql += ", ";
-            sql += " FROM Membresia x";
-            sql += " INNER JOIN Clientes m on (x.IdCliente = c.Id)";
-            sql += " INNER JOIN TipoMembresias p on (x.IdTipoMembresia = t.Id)";
+            sql += " FROM Membresia m";
+            sql += " INNER JOIN Cliente c on (m.IdCliente = c.Id)";
+            sql += " INNER JOIN TipoMembresia t on (m.IdTipoMembresia = t.Id)";
             ComunDB comundb = new ComunDB();
             ComunDB.utilQuery utilQuery = comundb.new utilQuery(sql, null, 0);
             querySelect(pMembresia, utilQuery);
