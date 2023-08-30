@@ -18,7 +18,7 @@
                 <input type="hidden" name="id" value="<%=genero.getId()%>">   
                 <div class="row">
                     <div class="input-field col l4 s12">
-                    <input disabled  id="txtNombre" type="text" value="<%=rol.getNombre()%>">
+                    <input disabled  id="txtNombre" type="text" value="<%=genero.getNombre()%>">
                     <label for="txtNombre">Nombre</label>
                 </div>                                        
                 </div>
