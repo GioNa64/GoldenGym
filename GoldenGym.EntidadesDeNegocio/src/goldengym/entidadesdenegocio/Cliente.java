@@ -141,5 +141,11 @@ public class Cliente {
     public void setMembresia(ArrayList<Membresia> membresia) {
         this.membresia = membresia;
     }
+    
+    public static class EstatusUsuario {
+
+        public static final byte ACTIVO = 1;
+        private static final byte INACTIVO = 2;
+    }
 
 }

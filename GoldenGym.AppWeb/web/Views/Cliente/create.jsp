@@ -13,10 +13,13 @@
             <form action="Cliente" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>">                
                 <div class="row">
-                    <div class="input-field col l4 s12">
-                        <input  id="txtIdGenero" type="text" name="idgenero" required class="validate" maxlength="30">
-                        <label for="txtIdGenero">IdGenero</label>
-                    </div>  
+                    <div class="input-field col l4 s12">   
+                        <jsp:include page="/Views/Genero/select.jsp">                           
+                            <jsp:param name="id" value="0" />  
+                        </jsp:include>  
+                        <span id="slGenero_error" style="color:red" class="helper-text"></span>
+                    </div>
+                </div>
                     <div class="input-field col l4 s12">
                         <input  id="txtNombre" type="text" name="nombre" required class="validate" maxlength="30">
                         <label for="txtNombre">Nombre</label>
@@ -41,13 +44,13 @@
                         <input  id="txtEdad" type="text" name="edad" required class="validate" maxlength="30">
                         <label for="txtEdad">Edad</label>
                     </div>
-                      <div class="input-field col l4 s12">
-                        <input  id="txtFechaRegistro" type="text" name="fecharegistro" required class="validate" maxlength="30">
-                        <label for="txtFechaRegistro">Fecha Registro</label>
-                    </div>
-                      <div class="input-field col l4 s12">
-                        <input  id="txtEstatus" type="text" name="estatus" required class="validate" maxlength="30">
-                        <label for="txtEstatus">Estatus</label>
+                      <div class="input-field col l4 s12">   
+                        <select id="slEstatus" name="estatus">
+                            <option value="0">SELECCIONAR</option>
+                            <option value="<%=Cliente.EstatusUsuario.ACTIVO%>">ACTIVO</option>
+                            <option value="<%=Cliente.EstatusUsuario.INACTIVO%>">INACTIVO</option>
+                        </select>       
+                        <label for="slEstatus">Estatus</label>
                     </div>
                 </div>
                 <div class="row">
@@ -59,5 +62,20 @@
             </form>          
         </main>
         <jsp:include page="/Views/Shared/footerBody.jsp" />
+        <script>
+            function validarFormulario() {
+                var result = true;
+                var slGenero = document.getElementById("slGenero");
+                var slGenero_error = document.getElementById("slGenero_error");
+                if (slGenero.value == 0) {
+                    slGenero_error.innerHTML = "El Genero es obligatorio";
+                    result = false;
+                } else {
+                    slGenero_error.innerHTML = "";
+                }
+
+                return result;
+            }
+        </script>
     </body>
 </html>

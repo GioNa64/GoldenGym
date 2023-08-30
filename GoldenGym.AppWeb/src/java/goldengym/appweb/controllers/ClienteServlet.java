@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import goldengym.accesoadatos.ClienteDAL;
 import goldengym.entidadesdenegocio.Cliente;
 import goldengym.appweb.utils.*;
+import java.time.LocalDate;
 
 @WebServlet(name = "ClienteServlet", urlPatterns = {"/Cliente"})
 public class ClienteServlet extends HttpServlet {
@@ -70,7 +71,10 @@ public class ClienteServlet extends HttpServlet {
     
     private void doPostRequestCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            
             Cliente cliente = obtenerCliente(request);
+            
+            cliente.setFechaRegistro(LocalDate.now());
             int result = ClienteDAL.crear(cliente);
             if (result != 0) {
                 request.setAttribute("accion", "index");
@@ -99,7 +103,7 @@ public class ClienteServlet extends HttpServlet {
     
     private void doGetRequestEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         requestObtenerPorId(request, response);
-        request.getRequestDispatcher("Views/Contacto/edit.jsp").forward(request, response);
+        request.getRequestDispatcher("Views/Cliente/edit.jsp").forward(request, response);
     }
     
     private void doPostRequestEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -120,12 +124,12 @@ public class ClienteServlet extends HttpServlet {
     
     private void doGetRequestDetails(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         requestObtenerPorId(request, response);
-        request.getRequestDispatcher("Views/Contacto/details.jsp").forward(request, response);
+        request.getRequestDispatcher("Views/Cliente/details.jsp").forward(request, response);
     }
     
     private void doGetRequestDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         requestObtenerPorId(request, response);
-        request.getRequestDispatcher("Views/Contacto/delete.jsp").forward(request, response);
+        request.getRequestDispatcher("Views/Cliente/delete.jsp").forward(request, response);
     }
     
     private void doPostRequestDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
