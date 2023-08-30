@@ -99,7 +99,7 @@ public class MembresiaServlet extends HttpServlet {
                 membresia_result.setTipomembresia(TipoMembresiaDAL.obtenerPorId(tipoMembresia));
                 request.setAttribute("membresia", membresia_result);
             } else {
-                Utilidad.enviarError("El Id:" + membresia_result.getId() + " no existe en la tabla de Empresas", request, response);
+                Utilidad.enviarError("El Id:" + membresia_result.getId() + " no existe en la tabla de Membresia", request, response);
             }
         } catch (Exception ex) {
             Utilidad.enviarError(ex.getMessage(), request, response);
