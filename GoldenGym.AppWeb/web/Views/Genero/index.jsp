@@ -32,11 +32,11 @@
             <form action="Genero" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
                 <div class="row">
-                    <div class="input-field col l6 s12">
+                    <div class="input-field col l6 s6">
                         <input  id="txtNombre" type="text" name="nombre">
                         <label for="txtNombre">Nombre</label>
-                    </div>                    
-                    <div class="input-field col l3 s12">   
+                    </div>                      
+                    <div class="input-field col l4 s4">   
                         <jsp:include page="/Views/Shared/selectTop.jsp">
                             <jsp:param name="top_aux" value="<%=top_aux%>" />                        
                         </jsp:include>                        
