@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="goldengym.entidadesdenegocio.Cliente"%>
+<%@page import="goldengym.entidadesdenegocio.Genero"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,14 +45,15 @@
                       <div class="input-field col l4 s12">
                         <input  id="txtEdad" type="text" name="edad" required class="validate" maxlength="30">
                         <label for="txtEdad">Edad</label>
-                    </div>
-                      <div class="input-field col l4 s12">   
-                        <select id="slEstatus" name="estatus">
+                        
+                    <div class="input-field col l4 s12">   
+                        <select id="slEstatus" name="estatus" class="validate">
                             <option value="0">SELECCIONAR</option>
-                            <option value="<%=Cliente.EstatusUsuario.ACTIVO%>">ACTIVO</option>
-                            <option value="<%=Cliente.EstatusUsuario.INACTIVO%>">INACTIVO</option>
+                            <option value="<%=Cliente.EstatusCliente.ACTIVO%>">ACTIVO</option>
+                            <option value="<%=Cliente.EstatusCliente.INACTIVO%>">INACTIVO</option>
                         </select>       
                         <label for="slEstatus">Estatus</label>
+                        <span id="slEstatus_error" style="color:red" class="helper-text"></span>
                     </div>
                 </div>
                 <div class="row">

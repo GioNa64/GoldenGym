@@ -144,7 +144,7 @@ public class MembresiaDAL {
                 
                 if (tipomembresiaMap.containsKey(membresia.getIdTipoMembresia()) == false) {
                     TipoMembresia tipomembresia = new TipoMembresia();
-                    TipoMembresiaDAL.asignarDatosResultSet(tipomembresia, resultSet, index+3);
+                    TipoMembresiaDAL.asignarDatosResultSet(tipomembresia, resultSet, index+2);
                     tipomembresiaMap.put(tipomembresia.getId(), tipomembresia); 
                     membresia.setTipomembresia(tipomembresia); 
                 } else {

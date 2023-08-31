@@ -118,7 +118,8 @@
                                     <td><%=usuario.getApellido()%></td>
                                     <td><%=usuario.getLogin()%></td>  
                                     <td><%=estatus%></td>
-                                    <td><%=usuario.getRol().getNombre()%></td> 
+                                    <td><%=usuario.getRol().getNombre()%></td>
+                                    <td><%=usuario.getGenero().getNombre()%></td>
                                     <td><%=usuario.getFechaRegistro()%></td> 
                                     <td>
                                         <div style="display:flex">

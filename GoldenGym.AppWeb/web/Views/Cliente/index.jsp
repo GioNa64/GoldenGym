@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="goldengym.entidadesdenegocio.Cliente"%>
+<%@page import="goldengym.entidadesdenegocio.Genero"%>
 <%@page import="java.util.ArrayList"%>
 
 <% ArrayList<Cliente> clientes = (ArrayList<Cliente>) request.getAttribute("clientes");

@@ -80,15 +80,16 @@ public class UsuarioDAL {
         boolean existe = existeLogin(pUsuario);
         if (existe == false) {
             try (Connection conn = ComunDB.obtenerConexion();) {
-                sql = "INSERT INTO Usuario(IdRol,Nombre,Apellido,Login,Pass,Estatus,FechaRegistro) VALUES(?,?,?,?,?,?,?)";
+                sql = "INSERT INTO Usuario(IdRol, IdGenero,Nombre,Apellido,Login,Password,Estatus,FechaRegistro) VALUES(?,?,?,?,?,?,?,?)";
                 try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                     ps.setInt(1, pUsuario.getIdRol());
-                    ps.setString(2, pUsuario.getNombre());
-                    ps.setString(3, pUsuario.getApellido()); 
-                    ps.setString(4, pUsuario.getLogin());
-                    ps.setString(5, encriptarMD5(pUsuario.getPassword())); 
-                    ps.setByte(6, pUsuario.getEstatus());
-                    ps.setDate(7, java.sql.Date.valueOf(LocalDate.now()));
+                    ps.setInt(2, pUsuario.getIdGenero());
+                    ps.setString(3, pUsuario.getNombre());
+                    ps.setString(4, pUsuario.getApellido()); 
+                    ps.setString(5, pUsuario.getLogin());
+                    ps.setString(6, encriptarMD5(pUsuario.getPassword())); 
+                    ps.setByte(7, pUsuario.getEstatus());
+                    ps.setDate(8, java.sql.Date.valueOf(LocalDate.now()));
                     result = ps.executeUpdate();
                     ps.close();
                 } catch (SQLException ex) {
@@ -112,7 +113,7 @@ public class UsuarioDAL {
         boolean existe = existeLogin(pUsuario);
         if (existe == false) {
             try (Connection conn = ComunDB.obtenerConexion();) {                
-                sql = "UPDATE Usuario SET IdRol=?, Nombre=?, Apellido=?, Login=?, Estatus=? WHERE Id=?";
+                sql = "UPDATE Usuario SET IdRol=?, IdGenero=?, Nombre=?, Apellido=?, Login=?, Estatus=? WHERE Id=?";
                 try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                     ps.setInt(1, pUsuario.getIdRol());
                     ps.setInt(2, pUsuario.getIdGenero());
@@ -210,7 +211,7 @@ public class UsuarioDAL {
                 
                 if (generoMap.containsKey(usuario.getIdGenero()) == false) {
                     Genero genero = new Genero();
-                    GeneroDAL.asignarDatosResultSet(genero, resultSet, index+3);
+                    GeneroDAL.asignarDatosResultSet(genero, resultSet, index+2);
                     generoMap.put(genero.getId(), genero); 
                     usuario.setGenero(genero); 
                 } else {
@@ -416,13 +417,12 @@ public class UsuarioDAL {
             }
             sql += obtenerCampos();
             sql += ", ";
-            sql += ClienteDAL.obtenerCampos();
+            sql += RolDAL.obtenerCampos();
             sql += ", ";
-            sql += TipoMembresiaDAL.obtenerCampos();
-            sql += ", ";
-            sql += " FROM Membresia x";
-            sql += " INNER JOIN Roles m on (x.IdRol = c.Id)";
-            sql += " INNER JOIN Generos p on (x.IdGenero = t.Id)";
+            sql += GeneroDAL.obtenerCampos();
+            sql += " FROM Usuario u";
+            sql += " INNER JOIN Rol r on (u.IdRol = r.Id)";
+            sql += " INNER JOIN Genero g on (u.IdGenero = g.Id)";
             ComunDB comundb = new ComunDB();
             ComunDB.utilQuery utilQuery = comundb.new utilQuery(sql, null, 0);
             querySelect(pUsuario, utilQuery);

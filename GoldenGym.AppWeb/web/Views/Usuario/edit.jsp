@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="goldengym.entidadesdenegocio.Usuario"%>
+<%@page import="goldengym.entidadesdenegocio.Rol"%>
+<%@page import="goldengym.entidadesdenegocio.Genero"%>
 <% Usuario usuario = (Usuario) request.getAttribute("usuario");%>
 
 <!DOCTYPE html>
