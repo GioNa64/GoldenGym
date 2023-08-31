@@ -34,8 +34,7 @@
             <form action="Membresia" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
                 <div class="row"> 
-                    </div>
-                    <div class="input-field col l4 s4">   
+                    <div class="input-field col l3 s3">   
                         <select id="slEstatus" name="estatus">
                             <option value="0">SELECCIONAR</option>
                             <option value="<%=Membresia.EstatusUsuario.ACTIVO%>">ACTIVO</option>
@@ -43,22 +42,23 @@
                         </select>       
                         <label for="slEstatus">Estatus</label>
                     </div>
-                    <div class="input-field col l4 s4">   
+                    <div class="input-field col l3 s3">   
                         <jsp:include page="/Views/TipoMembresia/select.jsp">                           
                             <jsp:param name="id" value="0" />  
                         </jsp:include>                        
                     </div>
-                         <div class="input-field col l4 s4">   
+                    <div class="input-field col l3 s3">   
                         <jsp:include page="/Views/Cliente/select.jsp">                           
                             <jsp:param name="id" value="0" />  
                         </jsp:include>                        
                     </div>
-                    <div class="input-field col l4 s4">   
+                    <div class="input-field col l3 s3">   
                         <jsp:include page="/Views/Shared/selectTop.jsp">
                             <jsp:param name="top_aux" value="<%=top_aux%>" />                        
                         </jsp:include>                        
                     </div> 
                 </div>
+
                 <div class="row">
                     <div class="col l12 s12">
                         <button type="sutmit" class="waves-effect waves-light btn blue"><i class="material-icons right">search</i>Buscar</button>
@@ -98,15 +98,15 @@
                                     <td><%=membresia.getEstatus()%></td>  
                                     <td>
                                         <div style="display:flex">
-                                             <a href="Membresia?accion=edit&id=<%=membresia.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
-                                            <i class="material-icons">edit</i>
-                                        </a>
-                                        <a href="Membresia?accion=details&id=<%=membresia.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
-                                            <i class="material-icons">description</i>
-                                        </a>
-                                        <a href="Membresia?accion=delete&id=<%=membresia.getId()%>" title="Eliminar" class="waves-effect waves-light btn red">
-                                            <i class="material-icons">delete</i>
-                                        </a>    
+                                            <a href="Membresia?accion=edit&id=<%=membresia.getId()%>" title="Modificar" class="waves-effect waves-light btn green">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+                                            <a href="Membresia?accion=details&id=<%=membresia.getId()%>" title="Ver" class="waves-effect waves-light btn blue">
+                                                <i class="material-icons">description</i>
+                                            </a>
+                                            <a href="Membresia?accion=delete&id=<%=membresia.getId()%>" title="Eliminar" class="waves-effect waves-light btn red">
+                                                <i class="material-icons">delete</i>
+                                            </a>    
                                         </div>                                                                    
                                     </td>                                   
                                 </tr>
