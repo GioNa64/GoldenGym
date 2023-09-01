@@ -95,12 +95,23 @@
                                 </tr>
                             </thead>                       
                             <tbody>                           
-                                <% for (Cliente cliente : clientes) {
+                               <% for (Cliente cliente : clientes) {
                                         int tempNumPage = numPage;
                                         if (numPage > 1) {
                                             countReg++;
                                             double divTempNumPage = (double) countReg / (double) numReg;
                                             tempNumPage = (int) Math.ceil(divTempNumPage);
+                                        }
+                                        String estatus = "";
+                                        switch (cliente.getEstatus()) {
+                                            case Cliente.EstatusUsuario.ACTIVO:
+                                                estatus = "ACTIVO";
+                                                break;
+                                            case Cliente.EstatusUsuario.INACTIVO:
+                                                estatus = "INACTIVO";
+                                                break;
+                                            default:
+                                                estatus = "";
                                         }
                                 %>
                                 <tr data-page="<%= tempNumPage%>">

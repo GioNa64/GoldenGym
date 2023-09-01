@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="input-field col l4 s12">   
                         <jsp:include page="/Views/Genero/select.jsp">                           
-                            <jsp:param name="id" value="0" />  
+                        <jsp:param name="id" value="0" />  
                         </jsp:include>  
                         <span id="slGenero_error" style="color:red" class="helper-text"></span>
                     </div>
@@ -49,8 +49,8 @@
                     <div class="input-field col l4 s12">   
                         <select id="slEstatus" name="estatus" class="validate">
                             <option value="0">SELECCIONAR</option>
-                            <option value="<%=Cliente.EstatusCliente.ACTIVO%>">ACTIVO</option>
-                            <option value="<%=Cliente.EstatusCliente.INACTIVO%>">INACTIVO</option>
+                            <option value="<%=Cliente.EstatusUsuario.ACTIVO%>">ACTIVO</option>
+                            <option value="<%=Cliente.EstatusUsuario.INACTIVO%>">INACTIVO</option>
                         </select>       
                         <label for="slEstatus">Estatus</label>
                         <span id="slEstatus_error" style="color:red" class="helper-text"></span>

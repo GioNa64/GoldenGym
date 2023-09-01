@@ -142,7 +142,7 @@ public class Cliente {
         this.membresia = membresia;
     }
     
-    public static class EstatusCliente {
+    public static class EstatusUsuario {
 
         public static final byte ACTIVO = 1;
         public static final byte INACTIVO = 2;
