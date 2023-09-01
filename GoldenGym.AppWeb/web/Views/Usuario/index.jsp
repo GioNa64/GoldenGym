@@ -5,7 +5,7 @@
 <% ArrayList<Usuario> usuarios = (ArrayList<Usuario>) request.getAttribute("usuarios");
     int numPage = 1;
     int numReg = 10;
-    int countReg = 0;
+    int countReg = 0; 
     if (usuarios == null) {
         usuarios = new ArrayList();
     } else if (usuarios.size() > numReg) {

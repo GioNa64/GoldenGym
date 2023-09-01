@@ -133,6 +133,7 @@ public class MembresiaDAL {
             while (resultSet.next()) {
                 Membresia membresia = new Membresia();
                 int index = asignarDatosResultSet(membresia, resultSet, 0);
+                
                 if (clienteMap.containsKey(membresia.getIdCliente()) == false) {
                     Cliente cliente = new Cliente();
                     ClienteDAL.asignarDatosResultSet(cliente, resultSet, index);
@@ -144,7 +145,7 @@ public class MembresiaDAL {
                 
                 if (tipomembresiaMap.containsKey(membresia.getIdTipoMembresia()) == false) {
                     TipoMembresia tipomembresia = new TipoMembresia();
-                    TipoMembresiaDAL.asignarDatosResultSet(tipomembresia, resultSet, index+2);
+                    TipoMembresiaDAL.asignarDatosResultSet(tipomembresia, resultSet, index+10);
                     tipomembresiaMap.put(tipomembresia.getId(), tipomembresia); 
                     membresia.setTipomembresia(tipomembresia); 
                 } else {
