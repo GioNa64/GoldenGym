@@ -73,7 +73,6 @@ public class ClienteServlet extends HttpServlet {
         try {
             
             Cliente cliente = obtenerCliente(request);
-            
             cliente.setFechaRegistro(LocalDate.now());
             int result = ClienteDAL.crear(cliente);
             if (result != 0) {

@@ -23,17 +23,22 @@
                         <label for="txtDecripcion">Descripcion</label>
                     </div> 
                     <div class="input-field col l4 s12">
-                        <input  id="txtPrecio" type="text" name="precio" required class="validate" maxlength="25">
+                        <input  id="txtPrecio" type="text" name="precio" required class="validate" maxlength="10">
                         <label for="txtPrecio">Precio</label>
                     </div> 
                     <div class="input-field col l4 s12">
-                        <input  id="txtDuracion" type="text" name="duracion" required class="validate" minlength="5" maxlength="32">
+                        <input  id="txtDuracion" type="text" name="duracion" required class="validate" minlength="2" maxlength="32">
                         <label for="txtDuracion">Duracion</label>
                     </div>  
-                     <div class="input-field col l4 s12">
-                        <input  id="txtEstatus" type="text" name="estatus" required class="validate" minlength="5" maxlength="32">
-                        <label for="txtEstatus">Estatus</label>
-                    </div> 
+                 <div class="input-field col l4 s12">   
+                        <select id="slEstatus" name="estatus" class="validate">
+                            <option value="0">SELECCIONAR</option>
+                            <option value="<%=TipoMembresia.EstatusUsuario.ACTIVO%>">ACTIVO</option>
+                            <option value="<%=TipoMembresia.EstatusUsuario.INACTIVO%>">INACTIVO</option>
+                        </select>       
+                        <label for="slEstatus">Estatus</label>
+                        <span id="slEstatus_error" style="color:red" class="helper-text"></span>
+                    </div>
                     <div class="input-field col l4 s12">   
                         <jsp:include page="/Views/TipoMembresia/select.jsp">                           
                             <jsp:param name="id" value="0" />  

@@ -19,29 +19,29 @@
                         <label for="txtNombre">Nombre</label>
                     </div>                       
                     <div class="input-field col l4 s12">
-                        <input  id="txtdescripcion" type="text" value="<%=tipoMembresias.getDescripcion()%>" disabled>
+                        <input id="txtdescripcion" type="text" value="<%=tipoMembresia.getDescripcion()%>" disabled>
                         <label for="txtDecripcion">Decripcion</label>
                     </div> 
                     <div class="input-field col l4 s12">
-                        <input  id="txtPrecio" type="text" value="<%=tipoMembresias.getPrecio()%>" disabled>
+                        <input  id="txtPrecio" type="text" value="<%=tipoMembresia.getPrecio()%>" disabled>
                         <label for="txtPrecio">Precio</label>
                     </div>      
                     <div class="input-field col l4 s12">
-                        <input  id="txtDuracion" type="text" value="<%=tipoMembresias.getDuracion()%>" disabled>
+                        <input  id="txtDuracion" type="text" value="<%=tipoMembresia.getDuracion()%>" disabled>
                         <label for="txtDuracion">Duracion</label>
                     </div>
                     <div class="input-field col l4 s12">
-                        <input id="txtEstatus" type="text" value="<%=tipoMembresias.getEstatus()%>" disabled>
+                        <input id="txtEstatus" type="text" value="<%=tipoMembresia.getEstatus()%>" disabled>
                         <label for="txtEstatus">Estatus</label>
                     </div> 
                 </div>
 
                 <div class="row">
                     <div class="col l12 s12">
-                         <a href="TipoMembresia?accion=edit&id=<%=TipoMembresia.getId()%>" class="waves-effect waves-light btn blue"><i class="material-icons right">edit</i>Ir modificar</a>            
-                        <a href="TipoMembresia" class="waves-effect waves-light btn blue"><i class="material-icons right">cancel</i>Cancelar</a>                          
+                         <a href="TipoMembresia?accion=edit&id=<%=tipoMembresia.getId()%>" class="waves-effect waves-light btn blue"><i class="material-icons right">edit</i>Ir modificar</a>            
+                        <a href="TipoMembresia" class="waves-effect waves-light btn blue"><i class="material-icons right">list</i>Cancelar</a>                          
                     </div>
-                </div>          
+                </div>             
         </main>
         <jsp:include page="/Views/Shared/footerBody.jsp" />
     </body>

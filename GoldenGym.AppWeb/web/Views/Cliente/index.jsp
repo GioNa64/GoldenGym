@@ -65,7 +65,7 @@
                     </div>  
                     <div class="input-field col l3 s12">   
                         <jsp:include page="/Views/Shared/selectTop.jsp">
-                            <jsp:param name="top_aux" value="<%=top_aux%>" />                        
+                        <jsp:param name="top_aux" value="<%=top_aux%>" />                        
                         </jsp:include>                        
                     </div> 
                 </div>

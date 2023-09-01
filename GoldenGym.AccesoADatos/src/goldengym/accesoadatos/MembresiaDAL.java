@@ -56,8 +56,8 @@ public class MembresiaDAL {
             try ( PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 ps.setInt(1, pMembresia.getIdCliente());
                 ps.setInt(2, pMembresia.getIdTipoMembresia());
-                ps.setByte(5, pMembresia.getEstatus());
-                ps.setInt(6, pMembresia.getId());
+                ps.setByte(3, pMembresia.getEstatus());
+                ps.setInt(4, pMembresia.getId());
                 result = ps.executeUpdate();
                 ps.close();
             } catch (SQLException ex) {

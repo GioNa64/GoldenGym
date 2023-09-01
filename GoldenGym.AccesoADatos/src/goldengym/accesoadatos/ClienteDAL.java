@@ -31,7 +31,7 @@ public class ClienteDAL {
         int result;
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) { 
-            sql = "INSERT INTO Cliente(IdGenero, Nombre, Apellido, Codigo, Email, Telefono, Edad, FechaRegistro, Estatus) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO Cliente(IdGenero, Nombre, Apellido, Codigo, Email, Telefono, Edad, FechaRegistro, Estatus) VALUES(?,?,?,?,?,?,?,?,?)";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 ps.setInt(1, pCliente.getIdGenero());
                 ps.setString(2, pCliente.getNombre());
@@ -58,17 +58,16 @@ public class ClienteDAL {
         int result;
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) {
-            sql = "UPDATE Cliente SET IdGenero = ?, Nombre = ?, Apellido = ?, Codigo = ?, Email = ?, Telefono = ?, Edad = ?, Estatus = ? WHERE Id=?";
+            sql = "UPDATE Cliente SET Nombre =?, Apellido =?, Codigo =?, Email =?, Telefono =?, Edad =?, Estatus =? WHERE Id=?";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
-                ps.setInt(1, pCliente.getIdGenero());
-                ps.setString(2, pCliente.getNombre());
-                ps.setString(3, pCliente.getApellido());
-                ps.setString(4, pCliente.getCodigo());
-                ps.setString(5, pCliente.getEmail());
-                ps.setString(6, pCliente.getTelefono());
-                ps.setInt(7, pCliente.getEdad());
-                ps.setByte(8, pCliente.getEstatus());
-                ps.setInt(9, pCliente.getId());
+                ps.setString(1, pCliente.getNombre());
+                ps.setString(2, pCliente.getApellido());
+                ps.setString(3, pCliente.getCodigo());
+                ps.setString(4, pCliente.getEmail());
+                ps.setString(5, pCliente.getTelefono());
+                ps.setInt(6, pCliente.getEdad());
+                ps.setByte(7, pCliente.getEstatus());
+                ps.setInt(8, pCliente.getId());
                 result = ps.executeUpdate();
                 ps.close();
             } catch (SQLException ex) {

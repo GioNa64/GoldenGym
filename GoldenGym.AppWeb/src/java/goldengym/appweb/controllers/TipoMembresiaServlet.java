@@ -62,7 +62,7 @@ public class TipoMembresiaServlet extends HttpServlet {
     }
     
     private void doGetRequestCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("Views/Contacto/create.jsp").forward(request, response);
+        request.getRequestDispatcher("Views/TipoMembresia/create.jsp").forward(request, response);
     }
     
     private void doPostRequestCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -87,7 +87,7 @@ public class TipoMembresiaServlet extends HttpServlet {
             if (tipoMembresia_result.getId() > 0) {
                 request.setAttribute("tipoMembresia", tipoMembresia_result);
             } else {
-                Utilidad.enviarError("El Id:" + tipoMembresia.getId() + " no existe en la tabla de TiposMembresias", request, response);
+                Utilidad.enviarError("El Id:" + tipoMembresia.getId() + " no existe en la tabla de Tipos de Membresias", request, response);
             }
         } catch (Exception ex) {
             Utilidad.enviarError(ex.getMessage(), request, response);

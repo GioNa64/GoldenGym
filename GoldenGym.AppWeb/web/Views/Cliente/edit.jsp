@@ -14,14 +14,11 @@
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
             <h5>Editar Cliente</h5>
-            <form action="Contacto" method="post">
+            <form action="Cliente" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>">   
                 <input type="hidden" name="id" value="<%=cliente.getId()%>">   
                 <div class="row">
-                    <div class="input-field col l4 s12">
-                        <input  id="txtIdGenero" type="text" name="idgenero" value="<%=cliente.getIdGenero()%>" required class="validate" maxlength="50">
-                        <label for="txtIdGenero">IdGenero</label>
-                    </div>
+                    
                     <div class="input-field col l4 s12">
                         <input  id="txtNombre" type="text" name="nombre" value="<%=cliente.getNombre()%>" required class="validate" maxlength="50">
                         <label for="txtNombre">Nombre</label>
@@ -46,6 +43,15 @@
                         <input  id="txtEdad" type="text" name="edad" value="<%=cliente.getEdad()%>" required class="validate" maxlength="15">
                         <label for="txtEdad">Edad</label>
                 </div>
+                        <div class="input-field col l4 s12">   
+                        <select id="slEstatus" name="estatus" class="validate">
+                            <option value="0">SELECCIONAR</option>
+                            <option value="<%=Cliente.EstatusCliente.ACTIVO%>">ACTIVO</option>
+                            <option value="<%=Cliente.EstatusCliente.INACTIVO%>">INACTIVO</option>
+                        </select>       
+                        <label for="slEstatus">Estatus</label>
+                        <span id="slEstatus_error" style="color:red" class="helper-text"></span>
+                    </div>
                 <div class="row">
                     <div class="col l12 s12">
                         <button type="sutmit" class="waves-effect waves-light btn blue"><i class="material-icons right">save</i>Guardar</button>

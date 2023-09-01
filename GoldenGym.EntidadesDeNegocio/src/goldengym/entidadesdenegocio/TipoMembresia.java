@@ -89,7 +89,10 @@ public class TipoMembresia {
     public void setMembresias(ArrayList<Membresia> membresias) {
         this.membresias = membresias;
     }
-
-   
     
+    public static class EstatusUsuario {
+
+        public static final byte ACTIVO = 1;
+        public static final byte INACTIVO = 2;
+    }   
 }

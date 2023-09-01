@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="goldengym.entidadesdenegocio.TipoMembresia"%>
+<%@page import="goldengym.entidadesdenegocio.Membresia"%>
 <% TipoMembresia tipoMembresia = (TipoMembresia) request.getAttribute("tipoMembresia");%>
 
 <!DOCTYPE html>
@@ -38,10 +39,9 @@
                         <input  id="txtEstatus" type="text" name="estatus" value="<%=tipoMembresia.getEstatus()%>" required  class="validate" maxlength="25">
                         <label for="txtEstatus">Estatus</label>
                     </div>
-                    
-                    <div class="input-field col l4 s12">   
+                       <div class="input-field col l4 s12">   
                         <jsp:include page="/Views/TipoMembresia/select.jsp">                           
-                            <jsp:param name="id" value="<%=tipoMembresia.getIdTipoMembresia() %>" />  
+                        <jsp:param name="id" value="0" />  
                         </jsp:include>  
                         <span id="slTipoMembresia_error" style="color:red" class="helper-text"></span>
                     </div>
