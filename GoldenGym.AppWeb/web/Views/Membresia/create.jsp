@@ -35,6 +35,15 @@
                         <input id="txtFechaVencimiento" type="date" name="fechaVencimiento" required class="validate">
                         <label for="txtFechaVencimiento">Fecha Vencimiento</label>
                     </div>
+                    <div class="input-field col l4 s12">   
+                        <select id="slEstatus" name="estatus" class="validate">
+                            <option value="0">SELECCIONAR</option>
+                            <option value="<%=Membresia.EstatusUsuario.ACTIVO%>">ACTIVO</option>
+                            <option value="<%=Membresia.EstatusUsuario.INACTIVO%>">INACTIVO</option>
+                        </select>       
+                        <label for="slEstatus">Estatus</label>
+                        <span id="slEstatus_error" style="color:red" class="helper-text"></span>
+                    </div>
                     
                 </div>
                 <div class="row">
