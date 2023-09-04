@@ -16,7 +16,7 @@
                 <div class="row">
                      <div class="input-field col l4 s12">   
                         <jsp:include page="/Views/Cliente/select.jsp">                           
-                            <jsp:param name="id" value="0" />  
+                        <jsp:param name="id" value="0" />  
                         </jsp:include>  
                         <span id="slCliente_error" style="color:red" class="helper-text"></span>
                     </div>                    

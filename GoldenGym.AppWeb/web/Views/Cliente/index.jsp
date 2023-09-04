@@ -59,10 +59,15 @@
                         <label for="txtEdad">Edad</label>
                     </div>  
  
-                    <div class="input-field col l3 s12">
-                        <input  id="txtEstatus" type="text" name="estatus">
-                        <label for="txtEstatus">Estatus</label>
-                    </div>  
+                    <div class="input-field col l4 s12">   
+                        <select id="slEstatus" name="estatus" class="validate">
+                            <option value="0">SELECCIONAR</option>
+                            <option value="<%=Cliente.EstatusUsuario.ACTIVO%>">ACTIVO</option>
+                            <option value="<%=Cliente.EstatusUsuario.INACTIVO%>">INACTIVO</option>
+                        </select>       
+                        <label for="slEstatus">Estatus</label>
+                        <span id="slEstatus_error" style="color:red" class="helper-text"></span>
+                    </div> 
                     <div class="input-field col l3 s12">   
                         <jsp:include page="/Views/Shared/selectTop.jsp">
                         <jsp:param name="top_aux" value="<%=top_aux%>" />                        
@@ -102,16 +107,16 @@
                                             double divTempNumPage = (double) countReg / (double) numReg;
                                             tempNumPage = (int) Math.ceil(divTempNumPage);
                                         }
-                                        String estatus = "";
+                                        String Estatus = "";
                                         switch (cliente.getEstatus()) {
-                                            case Cliente.EstatusUsuario.ACTIVO:
-                                                estatus = "ACTIVO";
+                                        case 1:
+                                                Estatus = "ACTIVO";
                                                 break;
-                                            case Cliente.EstatusUsuario.INACTIVO:
-                                                estatus = "INACTIVO";
+                                                case 2:
+                                                Estatus = "INACTIVO";
                                                 break;
                                             default:
-                                                estatus = "";
+                                                Estatus = "";
                                         }
                                 %>
                                 <tr data-page="<%= tempNumPage%>">

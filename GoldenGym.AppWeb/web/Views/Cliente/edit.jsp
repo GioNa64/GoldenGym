@@ -14,7 +14,7 @@
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
             <h5>Editar Cliente</h5>
-            <form action="Cliente" method="post">
+            <form action="Cliente" method="post" onsubmit="return validarFormulario()">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>">   
                 <input type="hidden" name="id" value="<%=cliente.getId()%>">   
                 <div class="row">

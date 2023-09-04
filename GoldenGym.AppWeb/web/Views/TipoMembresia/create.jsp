@@ -19,7 +19,7 @@
                         <label for="txtNombre">Nombre</label>
                     </div>                       
                     <div class="input-field col l4 s12">
-                        <input  id="txtDescripcion" type="text" name="descripcion" required class="validate" maxlength="50">
+                        <input  id="txtDescripcion" type="text" name="descripcion" required class="validate" maxlength="100">
                         <label for="txtDecripcion">Descripcion</label>
                     </div> 
                     <div class="input-field col l4 s12">
@@ -39,12 +39,6 @@
                         <label for="slEstatus">Estatus</label>
                         <span id="slEstatus_error" style="color:red" class="helper-text"></span>
                     </div>
-                    <div class="input-field col l4 s12">   
-                        <jsp:include page="/Views/TipoMembresia/select.jsp">                           
-                            <jsp:param name="id" value="0" />  
-                        </jsp:include>  
-                        <span id="slTipoMembresia_error" style="color:red" class="helper-text"></span>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col l12 s12">
@@ -55,21 +49,6 @@
             </form>          
         </main>
                         
-        <jsp:include page="/Views/Shared/footerBody.jsp" />   
-        <script>
-            function validarFormulario() {
-                var result = true;
-                var slTipoMembresia = document.getElementById("slTipoMembresia");
-                var slTipoMembresia_error = document.getElementById("slTipoMembresia_error");
-                if (slTipoMembresia.value == 0) {
-                    slTipoMembresia_error.innerHTML = "El Tipo de Membresia es obligatorio";
-                    result = false;
-                } else {
-                    slTipoMembresia_error.innerHTML = "";
-                }
-
-                return result;
-            }
-        </script>
+        <jsp:include page="/Views/Shared/footerBody.jsp" />
     </body>
 </html>

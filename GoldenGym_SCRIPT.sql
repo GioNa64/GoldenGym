@@ -10,6 +10,7 @@ CREATE TABLE Rol(
 Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 Nombre NVARCHAR(80) NOT NULL,
 );
+go
 
 CREATE TABLE Genero(
 Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
@@ -55,6 +56,7 @@ Precio MONEY NOT NULL,
 Duracion INT NOT NULL,
 Estatus TINYINT 
 );
+go
 
 CREATE TABLE Membresia(
 Id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
@@ -66,7 +68,15 @@ Estatus TINYINT NOT NULL,
 FOREIGN KEY(IdCliente)REFERENCES Cliente(Id),
 FOREIGN KEY(IdTipoMembresia)REFERENCES TipoMembresia(Id)
 );
+go
 
+select * from Usuario;
+
+insert into Genero values('Masculino');
+
+insert into Rol values ('Administrador');
+
+insert into Usuario values(1,1,'Juan','Perez','jp111','7bc345c019b57fccfd427acd01879aa3','25/08/2023',1);
 
 CREATE LOGIN Manuel
 WITH PASSWORD = 'manuel23',
@@ -79,10 +89,3 @@ USE GoldenGym;
 CREATE USER Manuel FOR LOGIN Manuel WITH DEFAULT_SCHEMA = dbo;
 ALTER ROLE db_owner ADD MEMBER Manuel;
 
-select * from Usuario;
-
-insert into Genero values('Masculino');
-
-insert into Rol values ('Administrador');
-
-insert into Usuario values(1,1,'Juan','Perez','jp111','7bc345c019b57fccfd427acd01879aa3','25/08/2023',1);
