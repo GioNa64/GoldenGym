@@ -6,7 +6,7 @@
 <% ArrayList<Genero> generos = GeneroDAL.obtenerTodos();
     int id = Integer.parseInt(request.getParameter("id"));
 %>
-<select id="slGenero" name="idGener
+<select id="slGenero" name="idGenero">
     <option <%=(id == 0) ? "selected" : ""%>  value="0">SELECCIONAR</option>
     <% for (Genero genero : generos) {%>
     <option <%=(id == genero.getId()) ? "selected" : ""%>  value="<%=genero.getId()%>"><%= genero.getNombre()%></option>
