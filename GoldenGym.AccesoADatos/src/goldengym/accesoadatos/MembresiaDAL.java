@@ -52,7 +52,7 @@ public class MembresiaDAL {
         int result;
         String sql;
         try ( Connection conn = ComunDB.obtenerConexion();) {
-            sql = "UPDATE Membresia SET IdCliente=?, IdTipoMembresia=?, Estatus=?, WHERE Id=?";
+            sql = "UPDATE Membresia SET IdCliente=?, IdTipoMembresia=?, Estatus=?    WHERE Id=?";
             try ( PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {
                 ps.setInt(1, pMembresia.getIdCliente());
                 ps.setInt(2, pMembresia.getIdTipoMembresia());

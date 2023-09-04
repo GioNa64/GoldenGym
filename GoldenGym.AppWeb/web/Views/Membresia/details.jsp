@@ -23,11 +23,11 @@
                         <label for="txtTipoMembresia">Tipo Membresia</label>
                     </div> 
                      <div class="input-field col l4 s12">
-                        <input id="txtFechaRegistro" type="text" value="<%=membresia.getFechaRegistro()%>" disabled>
+                        <input id="txtFechaRegistro" type="date" value="<%=membresia.getFechaRegistro()%>" disabled>
                         <label for="txtFechaRegistro">Fecha de Registro</label>
                     </div> 
                      <div class="input-field col l4 s12">
-                        <input id="txtFechaVencimiento" type="text" value="<%=membresia.getFechaVencimiento()%>" disabled>
+                        <input id="txtFechaVencimiento" type="date" value="<%=membresia.getFechaVencimiento()%>" disabled>
                         <label for="txtFechaVencimiento">Fecha de Vencimiento</label>
                     </div> 
                      <div class="input-field col l4 s12">   

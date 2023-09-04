@@ -28,15 +28,7 @@
                         </jsp:include>  
                         <span id="slTipoMembresia_error" style="color:red" class="helper-text"></span>
                     </div>
-                    
-                    <div class="input-field col l4 s12">
-                        <input  id="txtFechaRegistro" type="date" name="fechaRegistro" value="<%=membresia.getFechaRegistro()%>" required class="validate" maxlength="50">
-                        <label for="txtFechaRegistro">Fecha de Registro</label>
-                    </div>                       
-                    <div class="input-field col l4 s12">
-                        <input  id="txtFechaVencimiento" type="date" name="fechaVencimiento" value="<%=membresia.getFechaVencimiento()%>" required class="validate" maxlength="30">
-                        <label for="txtFechaVencimiento">Fecha de Vencimiento</label>
-                    </div> 
+                   
                    <div class="input-field col l4 s12">   
                         <select id="slEstatus" name="estatus" class="validate">
                             <option value="0" <%=(membresia.getEstatus() == 10) ? "selected" : ""%>>SELECCIONAR</option>
